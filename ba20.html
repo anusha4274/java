@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <code>
+        <pre>
+            public class SumOfPrimes {
+                public static void main(String[] args) {
+                    int count = 0; // Count of prime numbers found
+                    int sum = 0;   // Sum of prime numbers
+                    int number = 2; // Starting number to check for primes
+            
+                    while (count &lt; 100) {
+                        if (isPrime(number)) {
+                            sum += number; // Add prime number to sum
+                            count++; // Increment count of primes found
+                        }
+                        number++; // Check the next number
+                    }
+            
+                    System.out.println("The sum of the first 100 prime numbers is: " + sum);
+                }
+            
+                // Method to check if a number is prime
+                public static boolean isPrime(int num) {
+                    if (num &lt;= 1) return false; // 0 and 1 are not prime numbers
+                    for (int i = 2; i &lt;= Math.sqrt(num); i++) {
+                        if (num % i == 0) return false; // If num is divisible by i, it's not prime
+                    }
+                    return true; // num is prime
+                }
+            }
+            </pre>
+            </code>
+            <h4>Output</h4><br>
+            The sum of the first 100 prime numbers is: 24133
+</body>
+</html>
+            

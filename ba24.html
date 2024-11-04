@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <code>
+        <pre>
+            public class PalindromeChecker {
+                public static void main(String[] args) {
+                    // Example positive number to check
+                    int number = 121; // You can change this value to test with different numbers
+            
+                    // Check if the number is positive
+                    if (number &lt 0) {
+                        System.out.println("Error: Please provide a positive number.");
+                        return;
+                    }
+            
+                    // Call the method to check if the number is a palindrome
+                    boolean isPalindrome = checkPalindrome(number);
+            
+                    // Output the result
+                    if (isPalindrome) {
+                        System.out.println(number + " is a palindrome.");
+                    } else {
+                        System.out.println(number + " is not a palindrome.");
+                    }
+                }
+            
+                // Method to check if a number is a palindrome
+                public static boolean checkPalindrome(int num) {
+                    int originalNum = num; // Store the original number
+                    int reversedNum = 0;   // Variable to hold the reversed number
+            
+                    // Reverse the number
+                    while (num > 0) {
+                        int digit = num % 10;          // Get the last digit
+                        reversedNum = reversedNum * 10 + digit; // Build the reversed number
+                        num /= 10;                     // Remove the last digit
+                    }
+            
+                    // Check if the original number and the reversed number are the same
+                    return originalNum == reversedNum;
+                }
+            }
+             </pre></code>
+             <h4>Output</h4><br>
+             for number=121<br>
+             121 is a palindrome.<br>
+             for number=123<br>
+             123 is not a palindrome.
+</body>
+</html>

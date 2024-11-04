@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+    <!-- Google Fonts - Noto Sans Mono for Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Code Block Styling */
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; /* Monospace font for code */
+            background-color: #e8f7fa; /* Light pastel teal for background */
+            color: #2c3e50; /* Dark blue for code text */
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; /* Ensure proper wrapping */
+            line-height: 1.5; /* Better line spacing */
+            overflow-x: auto; /* Horizontal scrolling for large code blocks */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Pre block to enhance code readability */
+        pre {
+            margin: 20px 0;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <pre><code>import java.applet.Applet;
+        import java.awt.Graphics;
+        
+        public class HelloWorldApplet extends Applet {
+            public void paint(Graphics g) {
+                g.drawString("Hello World", 20, 20);
+            }
+        }
+</code></pre>
+
+Now, create an HTML file to embed the applet.
+
+<pre><code>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello World Applet</title>
+    </head>
+    <body>
+        <h1>Hello World Applet</h1>
+        <applet code="HelloWorldApplet.class" width="300" height="100">
+            Your browser does not support applets.
+        </applet>
+    </body>
+    </html>
+</code></pre>
+</body>
+</html>

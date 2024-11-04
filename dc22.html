@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <code>
+        <pre>
+            public class BooleanToStringExample {
+                public static void main(String[] args) {
+                    boolean boolValue1 = true;
+                    boolean boolValue2 = false;
+            
+                    // Method 1: Using String.valueOf()
+                    String strValue1 = String.valueOf(boolValue1);
+                    String strValue2 = String.valueOf(boolValue2);
+            
+                    // Method 2: Using Boolean.toString()
+                    String strValue3 = Boolean.toString(boolValue1);
+                    String strValue4 = Boolean.toString(boolValue2);
+            
+                    System.out.println("String from boolean true: " + strValue1);  // "true"
+                    System.out.println("String from boolean false: " + strValue2); // "false"
+                    System.out.println("String from boolean true (Boolean.toString): " + strValue3);  // "true"
+                    System.out.println("String from boolean false (Boolean.toString): " + strValue4); // "false"
+                }
+            }
+</pre></code>
+<h4>Output</h4><br>
+String from boolean true: true<br>
+String from boolean false: false<br>
+String from boolean true (Boolean.toString): true<br>
+String from boolean false (Boolean.toString): false
+</body>
+</html>
