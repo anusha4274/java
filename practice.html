@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Programming</title>
+
+    <!-- Google Fonts - Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- IonIcon CDN -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- General Stylesheet -->
+    <link rel="stylesheet" href="https://www.c4knowledgeseekers.in/css/general.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://www.c4knowledgeseekers.in/css/styles.css">
+
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="https://www.c4knowledgeseekers.in/css/responsive.css">
+
+    <!-- Custom Styles for this page -->
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .section-main {
+            padding: 20px;
+        }
+
+        .heading-tertiary {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .other-subject-mcq-section {
+            margin-bottom: 40px;
+        }
+
+        .other-subject-mcq-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background-color: #2980b9;
+        }
+
+        iframe {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .iframe-left, .iframe-right {
+            width: 48%;
+            height: 500px;
+            background-color: #8d8787;
+        }
+
+        .box {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // Success and error message handling
+        setTimeout(() => {
+            const box = document.getElementById('success-message');
+            if (box) {
+                box.style.display = 'none';
+            }
+        }, 2000);
+
+        setTimeout(() => {
+            const box = document.getElementById('error-message');
+            if (box) {
+                box.style.display = 'none';
+            }
+        }, 2000);
+    </script>
+
+    <!-- Main Section -->
+    <main class="section-main">
+        <section class="other-subject-mcq-section" id="choose-exam-unit">
+            <h3 class="heading-tertiary align-center">
+                CORE JAVA PROGRAMMING - Topics
+            </h3>
+
+            <div class="other-subject-mcq-links">
+                <a href="2d.html" target="left" class="btn cta-btn flex-item-same-width">2D ARRAYS</a>
+                <a href="applets.html" target="left" class="btn cta-btn flex-item-same-width">APPLETS</a>
+                <a href="basic.html" target="left" class="btn cta-btn flex-item-same-width">BASIC PROGRAMMING CONSTRUCTS</a>
+                <a href="dco.html" target="left" class="btn cta-btn flex-item-same-width">DATA CONVERSION</a>
+                <a href="delegation.html" target="left" class="btn cta-btn flex-item-same-width">DELEGATION EVENT MODEL</a>
+                <a href="exc.html" target="left" class="btn cta-btn flex-item-same-width">EXCEPTION HANDLING</a>
+                <a href="function.html" target="left" class="btn cta-btn flex-item-same-width">FUNCTIONS</a>
+                <a href="awt.html" target="left" class="btn cta-btn flex-item-same-width">GRAPHICAL USER INTERFACE (AWT)</a>
+                <a href="inheritance.html" target="left" class="btn cta-btn flex-item-same-width">INHERITANCE</a>
+                <a href="io.html" target="left" class="btn cta-btn flex-item-same-width">INPUT/OUTPUT</a>
+                <a href="interface.html" target="left" class="btn cta-btn flex-item-same-width">INTERFACES</a>
+                <a href="jdbc.html" target="left" class="btn cta-btn flex-item-same-width">JAVA DATABASE CONNECTIVITY</a>
+                <a href="multithreading.html" target="left" class="btn cta-btn flex-item-same-width">MULTITHREADING</a>
+                <a href="oop.html" target="left" class="btn cta-btn flex-item-same-width">OBJECT ORIENTED PROGRAMMING</a>
+                <a href="package.html" target="left" class="btn cta-btn flex-item-same-width">PACKAGES</a>
+                <a href="1d.html" target="left" class="btn cta-btn flex-item-same-width">SINGLE DIMENSION ARRAYS</a>
+                <a href="strings.html" target="left" class="btn cta-btn flex-item-same-width">STRINGS</a>
+            </div>
+        </section>
+
+        <!-- Iframes Section -->
+        <div class="box">
+            <iframe class="iframe-left" name="left"></iframe>
+            <iframe class="iframe-right" name="right"></iframe>
+        </div>
+    </main>
+
+</body>
+</html>
+
+
+
+
+
