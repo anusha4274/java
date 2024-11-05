@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Java Code Snippet</title>
 
-    <!-- Google Fonts - Noto Sans Mono for Code -->
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,26 +18,26 @@
             padding: 20px;
         }
 
-        /* Code Block Styling */
+        
         code, pre {
-            font-family: 'Noto Sans Mono', monospace; /* Monospace font for code */
-            background-color: #e8f7fa; /* Light pastel teal for background */
-            color: #2c3e50; /* Dark blue for code text */
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
             padding: 15px;
             border-radius: 10px;
             display: block;
-            white-space: pre-wrap; /* Ensure proper wrapping */
-            line-height: 1.5; /* Better line spacing */
-            overflow-x: auto; /* Horizontal scrolling for large code blocks */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
         }
 
-        /* Pre block to enhance code readability */
+     
         pre {
             margin: 20px 0;
         }
 
-        /* Responsive design for smaller screens */
+       
         @media (max-width: 768px) {
             code, pre {
                 font-size: 0.9rem;
@@ -49,14 +49,20 @@
 <body>
 
     <pre><code>
-import java.applet.Applet;
-import java.awt.Graphics;
-
-public class HelloWorldApplet extends Applet {
-    public void paint(Graphics g) {
-        g.drawString("Hello World", 20, 20); 
-    }
-}
+        import java.applet.Applet;
+        import java.awt.Color;
+        
+        public class BackgroundColorApplet extends Applet {
+            @Override
+            public void init() {
+                setBackground(Color.LIGHT_GRAY);
+            }
+        
+            @Override
+            public void paint(Graphics g) {
+                g.drawString("Background Color Changed!", 50, 100);
+            }
+        }
 </code></pre>
 </body>
-</html>
+</html>        
