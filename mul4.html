@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    class MatrixMultiplyThread extends Thread {
+        private int[][] matrixA;
+        private int[][] matrixB;
+        private int[][] result;
+        private int row;
+        private int col;
+    
+        public MatrixMultiplyThread(int[][] matrixA, int[][] matrixB, int[][] result, int row, int col) {
+            this.matrixA = matrixA;
+            this.matrixB = matrixB;
+            this.result = result;
+            this.row = row;
+            this.col = col;
+        }
+    
+        @Override
+        public void run() {
+            int sum = 0;
+            for (int i = 0; i &lt; matrixA[0].length; i++) {
+                sum += matrixA[row][i] * matrixB[i][col];
+            }
+            result[row][col] = sum;
+        }
+    }
+    
+    public class MatrixMultiplication {
+        public static void main(String[] args) throws InterruptedException {
+            int[][] matrixA = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+            };
+    
+            int[][] matrixB = {
+                {9, 8, 7},
+                {6, 5, 4},
+                {3, 2, 1}
+            };
+    
+            int rows = matrixA.length;
+            int cols = matrixB[0].length;
+            int[][] result = new int[rows][cols];
+    
+            MatrixMultiplyThread[][] threads = new MatrixMultiplyThread[rows][cols];
+    
+            for (int i = 0; i &lt; rows; i++) {
+                for (int j = 0; j &lt; cols; j++) {
+                    threads[i][j] = new MatrixMultiplyThread(matrixA, matrixB, result, i, j);
+                    threads[i][j].start();
+                }
+            }
+    
+            for (int i = 0; i &LT rows; i++) {
+                for (int j = 0; j &lt; cols; j++) {
+                    threads[i][j].join();
+                }
+            }
+    
+            System.out.println("Resultant Matrix:");
+            for (int i = 0; i &lt; rows; i++) {
+                for (int j = 0; j &lt; cols; j++) {
+                    System.out.print(result[i][j] + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+    
+    <h3>Output</h3>
+
+Resultant Matrix:
+30 24 18 
+84 69 54 
+138 114 90
+</code></pre>
+</body>
+</html>
+    

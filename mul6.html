@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    import java.io.BufferedReader;
+    import java.io.InputStreamReader;
+    import java.net.URL;
+    import java.net.HttpURLConnection;
+    import java.util.HashSet;
+    import java.util.Set;
+    import java.util.concurrent.*;
+    
+    public class ConcurrentWebCrawler {
+    
+        private static final Set&lt;String&gt; visitedUrls = new HashSet&lt;&gt;();
+        private static final ExecutorService executorService = Executors.newFixedThreadPool(10);
+        private static final BlockingQueue&lt;String&gt; urlQueue = new LinkedBlockingQueue&lt;&gt;();
+    
+        public static void main(String[] args) throws InterruptedException {
+            String startUrl = "http://example.com"; // Starting URL
+            urlQueue.add(startUrl);
+    
+            // Crawl the websites using threads
+            for (int i = 0; i &lt; 10; i++) {
+                executorService.submit(new CrawlerTask());
+            }
+    
+            // Let the threads run for some time (e.g., 30 seconds) and then stop
+            TimeUnit.SECONDS.sleep(30);
+            executorService.shutdown();
+        }
+    
+        static class CrawlerTask implements Runnable {
+    
+            @Override
+            public void run() {
+                while (!executorService.isShutdown()) {
+                    try {
+                        String url = urlQueue.take(); // Take a URL from the queue
+                        if (visitedUrls.contains(url)) {
+                            continue;
+                        }
+                        visitedUrls.add(url); // Mark this URL as visited
+    
+                        System.out.println("Crawling: " + url);
+                        String content = fetchPageContent(url);
+                        if (content != null) {
+                            Set&lt;String&gt; links = extractLinks(content);
+                            for (String link : links) {
+                                if (!visitedUrls.contains(link)) {
+                                    urlQueue.add(link); // Add new links to the queue for crawling
+                                }
+                            }
+                        }
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            }
+    
+            private String fetchPageContent(String urlString) {
+                StringBuilder content = new StringBuilder();
+                try {
+                    URL url = new URL(urlString);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+                    connection.setConnectTimeout(5000); // Timeout in milliseconds
+                    connection.setReadTimeout(5000);
+    
+                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        content.append(inputLine);
+                    }
+                    in.close();
+                } catch (Exception e) {
+                    System.out.println("Error fetching content from: " + urlString);
+                }
+                return content.toString();
+            }
+    
+            private Set&lt;String&gt; extractLinks(String content) {
+                Set&lt;String&gt; links = new HashSet&lt;&gt;();
+                // A simple regex to extract href links from the content
+                String regex = "href=\"(http[^\"]+)\"";
+                java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
+                java.util.regex.Matcher matcher = pattern.matcher(content);
+                while (matcher.find()) {
+                    links.add(matcher.group(1));
+                }
+                return links;
+            }
+        }
+    }
+    
+
+    <h3>Output</h3>
+
+Crawling: http://example.com
+Crawling: http://example.com/page1
+Crawling: http://example.com/page2
+Crawling: http://example.com/page3
+...
+</code></pre>
+</body>
+</html>

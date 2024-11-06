@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    class SharedResource {
+        private int counter = 0;
+    
+        // Synchronized method to increase the counter
+        public synchronized void increment() {
+            counter++;
+            System.out.println(Thread.currentThread().getName() + " incremented counter to " + counter);
+        }
+    
+        // Synchronized method to wait for the counter to reach a certain value
+        public synchronized void waitForIncrement() throws InterruptedException {
+            while (counter &lt; 5) {
+                System.out.println(Thread.currentThread().getName() + " is waiting...");
+                wait();  // The thread will wait until notified
+            }
+            System.out.println(Thread.currentThread().getName() + " detected counter &gt;= 5, proceeding...");
+        }
+    
+        // Synchronized method to notify other threads when the counter is incremented
+        public synchronized void notifyAllThreads() {
+            notifyAll();  // Notify all waiting threads
+        }
+    
+        // Synchronized method to get the counter value
+        public synchronized int getCounter() {
+            return counter;
+        }
+    }
+    
+    class IncrementThread extends Thread {
+        private SharedResource resource;
+    
+        public IncrementThread(SharedResource resource, String name) {
+            this.resource = resource;
+            setName(name);
+        }
+    
+        @Override
+        public void run() {
+            try {
+                for (int i = 0; i &lt; 5; i++) {
+                    resource.increment();
+                    Thread.sleep(500);  // Simulating time delay for each increment
+                }
+                resource.notifyAllThreads();  // Notify all waiting threads when done
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    class WaitingThread extends Thread {
+        private SharedResource resource;
+    
+        public WaitingThread(SharedResource resource, String name) {
+            this.resource = resource;
+            setName(name);
+        }
+    
+        @Override
+        public void run() {
+            try {
+                resource.waitForIncrement();  // Wait until counter reaches 5
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public class NotifyNotifyAllWaitSleepDemo {
+        public static void main(String[] args) throws InterruptedException {
+            SharedResource resource = new SharedResource();
+    
+            // Creating threads that will wait for the counter to reach 5
+            WaitingThread thread1 = new WaitingThread(resource, "WaitingThread1");
+            WaitingThread thread2 = new WaitingThread(resource, "WaitingThread2");
+    
+            // Creating the increment thread
+            IncrementThread incrementThread = new IncrementThread(resource, "IncrementThread");
+    
+            // Start the threads
+            thread1.start();
+            thread2.start();
+            incrementThread.start();
+    
+            // Wait for the increment thread to finish
+            incrementThread.join();
+            
+            // Wait for waiting threads to finish
+            thread1.join();
+            thread2.join();
+    
+            System.out.println("Final Counter Value: " + resource.getCounter());
+        }
+    }
+
+    <h3>Output</h3>
+
+WaitingThread1 is waiting...
+WaitingThread2 is waiting...
+IncrementThread incremented counter to 1
+IncrementThread incremented counter to 2
+IncrementThread incremented counter to 3
+IncrementThread incremented counter to 4
+IncrementThread incremented counter to 5
+WaitingThread1 detected counter >= 5, proceeding...
+WaitingThread2 detected counter >= 5, proceeding...
+Final Counter Value: 5
+</code></pre>
+</body>
+</html>

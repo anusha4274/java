@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    class BankAccount {
+        private double balance;
+    
+        public BankAccount(double initialBalance) {
+            this.balance = initialBalance;
+        }
+    
+        public synchronized void deposit(double amount) {
+            if (amount &gt; 0) {
+                balance += amount;
+                System.out.println("Deposited: " + amount + ", New Balance: " + balance);
+            }
+        }
+    
+        public synchronized void withdraw(double amount) {
+            if (amount &gt; 0 && amount &lt;= balance) {
+                balance -= amount;
+                System.out.println("Withdrew: " + amount + ", New Balance: " + balance);
+            } else {
+                System.out.println("Insufficient funds for withdrawal of: " + amount);
+            }
+        }
+    
+        public double getBalance() {
+            return balance;
+        }
+    }
+    
+    class DepositTask extends Thread {
+        private BankAccount account;
+        private double amount;
+    
+        public DepositTask(BankAccount account, double amount) {
+            this.account = account;
+            this.amount = amount;
+        }
+    
+        @Override
+        public void run() {
+            account.deposit(amount);
+        }
+    }
+    
+    class WithdrawTask extends Thread {
+        private BankAccount account;
+        private double amount;
+    
+        public WithdrawTask(BankAccount account, double amount) {
+            this.account = account;
+            this.amount = amount;
+        }
+    
+        @Override
+        public void run() {
+            account.withdraw(amount);
+        }
+    }
+    
+    public class BankAccountSimulation {
+        public static void main(String[] args) throws InterruptedException {
+            BankAccount account = new BankAccount(1000.0); // Initial balance of 1000.0
+    
+            // Creating and starting deposit threads
+            DepositTask deposit1 = new DepositTask(account, 500.0);
+            DepositTask deposit2 = new DepositTask(account, 300.0);
+    
+            // Creating and starting withdrawal threads
+            WithdrawTask withdraw1 = new WithdrawTask(account, 200.0);
+            WithdrawTask withdraw2 = new WithdrawTask(account, 600.0);
+    
+            deposit1.start();
+            deposit2.start();
+            withdraw1.start();
+            withdraw2.start();
+    
+            // Wait for all threads to complete
+            deposit1.join();
+            deposit2.join();
+            withdraw1.join();
+            withdraw2.join();
+    
+            System.out.println("Final Balance: " + account.getBalance());
+        }
+    }
+
+    <h3>Output</h3>
+
+Deposited: 500.0, New Balance: 1500.0
+Deposited: 300.0, New Balance: 1800.0
+Withdrew: 200.0, New Balance: 1600.0
+Withdrew: 600.0, New Balance: 1000.0
+Final Balance: 1000.0
+</code>
+</pre>
+</body></html>
+    
+    

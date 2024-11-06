@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    class TaskThread extends Thread {
+        private String taskName;
+    
+        public TaskThread(String taskName) {
+            this.taskName = taskName;
+        }
+    
+        @Override
+        public void run() {
+            try {
+                // Simulate some work with sleep
+                for (int i = 1; i &lt;= 3; i++) {
+                    System.out.println(taskName + " is working... Step " + i);
+                    Thread.sleep(500);  // Simulate work
+                    // Yielding the CPU to allow other threads to run
+                    Thread.yield();
+                }
+                System.out.println(taskName + " completed.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public class JoinAndYieldDemo {
+        public static void main(String[] args) throws InterruptedException {
+            // Create multiple threads
+            TaskThread thread1 = new TaskThread("Thread 1");
+            TaskThread thread2 = new TaskThread("Thread 2");
+            TaskThread thread3 = new TaskThread("Thread 3");
+    
+            // Start all threads
+            thread1.start();
+            thread2.start();
+            thread3.start();
+    
+            // Main thread waits for all threads to finish using join()
+            System.out.println("Main thread waiting for all threads to finish...");
+    
+            // Wait for thread1 to finish
+            thread1.join();
+            // Wait for thread2 to finish
+            thread2.join();
+            // Wait for thread3 to finish
+            thread3.join();
+    
+            System.out.println("All threads completed. Main thread resuming.");
+        }
+    }
+
+    <h3>Output</h3>
+
+Thread 1 is working... Step 1
+Thread 2 is working... Step 1
+Thread 3 is working... Step 1
+Thread 1 is working... Step 2
+Thread 2 is working... Step 2
+Thread 3 is working... Step 2
+Thread 1 is working... Step 3
+Thread 2 is working... Step 3
+Thread 3 is working... Step 3
+Thread 1 completed.
+Thread 2 completed.
+Thread 3 completed.
+Main thread waiting for all threads to finish...
+All threads completed. Main thread resuming.
+</code></pre>
+</body>
+</html>

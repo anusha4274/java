@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    class EvenThread extends Thread {
+        public void run() {
+            for (int i = 2; i &lt= 20; i += 2) {
+                System.out.println("Even: " + i);
+            }
+        }
+    }
+    
+    class OddThread extends Thread {
+        public void run() {
+            for (int i = 1; i &lt= 19; i += 2) {
+                System.out.println("Odd: " + i);
+            }
+        }
+    }
+    
+    public class EvenOddThreads {
+        public static void main(String[] args) {
+            EvenThread evenThread = new EvenThread();
+            OddThread oddThread = new OddThread();
+            evenThread.start();
+            oddThread.start();
+        }
+    }
+   
+    <h3>Output</h3>
+
+Even: 2
+Odd: 1
+Even: 4
+Odd: 3
+Even: 6
+Odd: 5
+Even: 8
+Odd: 7
+Even: 10
+Odd: 9
+Even: 12
+Odd: 11
+Even: 14
+Odd: 13
+Even: 16
+Odd: 15
+Even: 18
+Odd: 17
+Even: 20
+ Odd: 19
+ </code></pre>
+ </body>
+ </html>
+    
