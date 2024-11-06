@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    abstract class Person {
+        public abstract void eat();
+        public abstract void exercise();
+    }
+    
+    class Athlete extends Person {
+        @Override
+        public void eat() {
+            System.out.println("The athlete eats a high-protein meal to fuel the body.");
+        }
+    
+        @Override
+        public void exercise() {
+            System.out.println("The athlete trains intensely with daily workouts and physical conditioning.");
+        }
+    }
+    
+    class LazyPerson extends Person {
+        @Override
+        public void eat() {
+            System.out.println("The lazy person eats fast food while lounging on the couch.");
+        }
+    
+        @Override
+        public void exercise() {
+            System.out.println("The lazy person avoids exercise and prefers to rest most of the day.");
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Person athlete = new Athlete();
+            Person lazyPerson = new LazyPerson();
+    
+            System.out.println("Athlete's routine:");
+            athlete.eat();
+            athlete.exercise();
+    
+            System.out.println("\nLazy Person's routine:");
+            lazyPerson.eat();
+            lazyPerson.exercise();
+        }
+    }
+
+                 OUTPUT
+
+                 Athlete's routine:
+                 The athlete eats a high-protein meal to fuel the body.
+                 The athlete trains intensely with daily workouts and physical conditioning.
+                 
+                 Lazy Person's routine:
+                 The lazy person eats fast food while lounging on the couch.
+                 The lazy person avoids exercise and prefers to rest most of the day.
+</code>
+</pre>
+</body>
+</html>                 

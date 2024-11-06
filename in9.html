@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+class Vehicle {
+    protected String make;
+    protected String model;
+    protected int year;
+    protected String fuelType;
+
+    public Vehicle(String make, String model, int year, String fuelType) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.fuelType = fuelType;
+    }
+
+
+    public double calculateFuelEfficiency(double milesDriven, double fuelUsed) {
+        return milesDriven / fuelUsed;
+    }
+
+   
+    public double calculateDistance(double fuelUsed, double fuelEfficiency) {
+        return fuelUsed * fuelEfficiency;
+    }
+
+   
+    public double getMaxSpeed() {
+        return 100.0; 
+    }
+
+   
+    public void printVehicleInfo() {
+        System.out.println("Make: " + make);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+
+class Truck extends Vehicle {
+
+    
+    public Truck(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+
+   
+    public double getMaxSpeed() {
+        return 80.0; 
+    }
+}
+
+
+class Car extends Vehicle {
+
+    
+    public Car(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+
+   
+    public double getMaxSpeed() {
+        return 120.0; 
+    }
+}
+
+
+class Motorcycle extends Vehicle {
+
+    
+    public Motorcycle(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+
+   
+    public double getMaxSpeed() {
+        return 150.0; 
+    }
+}
+
+
+class inh9 {
+    public static void main(String[] args) {
+        Truck truck = new Truck("Ford", "F-150", 2022, "Diesel");
+        Car car = new Car("Toyota", "Camry", 2021, "Gasoline");
+        Motorcycle motorcycle = new Motorcycle("Harley", "Street 750", 2020, "Gasoline");
+
+        
+        System.out.println("Truck Info:");
+        truck.printVehicleInfo();
+        System.out.println("Max Speed: " + truck.getMaxSpeed() + " mph");
+        System.out.println("Fuel Efficiency: " + truck.calculateFuelEfficiency(200, 10) + " MPG");
+        System.out.println("Distance Traveled: " + truck.calculateDistance(10, 20) + " miles\n");
+
+        
+        System.out.println("Car Info:");
+        car.printVehicleInfo();
+        System.out.println("Max Speed: " + car.getMaxSpeed() + " mph");
+        System.out.println("Fuel Efficiency: " + car.calculateFuelEfficiency(300, 15) + " MPG");
+        System.out.println("Distance Traveled: " + car.calculateDistance(15, 30) + " miles\n");
+
+      
+        System.out.println("Motorcycle Info:");
+        motorcycle.printVehicleInfo();
+        System.out.println("Max Speed: " + motorcycle.getMaxSpeed() + " mph");
+        System.out.println("Fuel Efficiency: " + motorcycle.calculateFuelEfficiency(150, 5) + " MPG");
+        System.out.println("Distance Traveled: " + motorcycle.calculateDistance(5, 30) + " miles\n");
+    }
+}
+
+         OUTPUT
+
+
+         Truck Info:
+         Make: Ford
+         Model: F-150
+         Year: 2022
+         Fuel Type: Diesel
+         Max Speed: 80.0 mph
+         Fuel Efficiency: 20.0 MPG
+         Distance Traveled: 200.0 miles
+         
+         Car Info:
+         Make: Toyota
+         Model: Camry
+         Year: 2021
+         Fuel Type: Gasoline
+         Max Speed: 120.0 mph
+         Fuel Efficiency: 20.0 MPG
+         Distance Traveled: 450.0 miles
+         
+         Motorcycle Info:
+         Make: Harley
+         Model: Street 750
+         Year: 2020
+         Fuel Type: Gasoline
+         Max Speed: 150.0 mph
+         Fuel Efficiency: 30.0 MPG
+         Distance Traveled: 150.0 miles
+ </code></pre>
+ </body>
+ </html>        
+

@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    abstract class Animal {
+        public abstract void eat();
+        public abstract void sleep();
+    }
+    
+    class Lion extends Animal {
+        @Override
+        public void eat() {
+            System.out.println("The lion hunts and eats meat.");
+        }
+    
+        @Override
+        public void sleep() {
+            System.out.println("The lion sleeps for about 20 hours a day.");
+        }
+    }
+    
+    class Tiger extends Animal {
+        @Override
+        public void eat() {
+            System.out.println("The tiger stalks and eats large prey.");
+        }
+    
+        @Override
+        public void sleep() {
+            System.out.println("The tiger sleeps during the day and hunts at night.");
+        }
+    }
+    
+    class Deer extends Animal {
+        @Override
+        public void eat() {
+            System.out.println("The deer grazes on grass and plants.");
+        }
+    
+        @Override
+        public void sleep() {
+            System.out.println("The deer sleeps at night, often standing.");
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Animal lion = new Lion();
+            Animal tiger = new Tiger();
+            Animal deer = new Deer();
+    
+            System.out.println("Lion's behavior:");
+            lion.eat();
+            lion.sleep();
+    
+            System.out.println("\nTiger's behavior:");
+            tiger.eat();
+            tiger.sleep();
+    
+            System.out.println("\nDeer's behavior:");
+            deer.eat();
+            deer.sleep();
+        }
+    }
+
+    
+                OUTPUT
+
+                Lion's behavior:
+                The lion hunts and eats meat.
+                The lion sleeps for about 20 hours a day.
+                
+                Tiger's behavior:
+                The tiger stalks and eats large prey.
+                The tiger sleeps during the day and hunts at night.
+                
+                Deer's behavior:
+                The deer grazes on grass and plants.
+                The deer sleeps at night, often standing.
+</code>
+</pre>
+</body></html>                

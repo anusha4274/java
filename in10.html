@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre>
+    <code>
+        // Base class Employee
+        class Employee {
+            protected String name;
+            protected String address;
+            protected double salary;
+            protected String jobTitle;
+        
+            public Employee(String name, String address, double salary, String jobTitle) {
+                this.name = name;
+                this.address = address;
+                this.salary = salary;
+                this.jobTitle = jobTitle;
+            }
+        
+            public double calculateBonus() {
+                return salary * 0.05;
+            }
+        
+            public String generatePerformanceReport() {
+                return "Performance report for " + name + " (" + jobTitle + ")";
+            }
+        
+            public String manageProject(String projectName) {
+                return name + " is managing the project: " + projectName;
+            }
+        
+            public void printEmployeeInfo() {
+                System.out.println("Name: " + name);
+                System.out.println("Address: " + address);
+                System.out.println("Salary: $" + salary);
+                System.out.println("Job Title: " + jobTitle);
+            }
+        }
+        
+        // Manager subclass
+        class Manager extends Employee {
+        
+            public Manager(String name, String address, double salary) {
+                super(name, address, salary, "Manager");
+            }
+        
+            @Override
+            public double calculateBonus() {
+                return salary * 0.15;
+            }
+        
+            @Override
+            public String manageProject(String projectName) {
+                return name + " (Manager) is overseeing the project: " + projectName;
+            }
+        }
+        
+        // Developer subclass
+        class Developer extends Employee {
+        
+            public Developer(String name, String address, double salary) {
+                super(name, address, salary, "Developer");
+            }
+        
+            @Override
+            public double calculateBonus() {
+                return salary * 0.10;
+            }
+        
+            @Override
+            public String manageProject(String projectName) {
+                return name + " (Developer) is developing the project: " + projectName;
+            }
+        }
+        
+        // Programmer subclass
+        class Programmer extends Employee {
+        
+            public Programmer(String name, String address, double salary) {
+                super(name, address, salary, "Programmer");
+            }
+        
+            @Override
+            public double calculateBonus() {
+                return salary * 0.08;
+            }
+        
+            @Override
+            public String manageProject(String projectName) {
+                return name + " (Programmer) is coding for the project: " + projectName;
+            }
+        }
+        
+        // Main class to test the hierarchy
+        public class Main {
+            public static void main(String[] args) {
+                Manager manager = new Manager("Alice", "123 Maple St", 85000);
+                Developer developer = new Developer("Bob", "456 Oak St", 75000);
+                Programmer programmer = new Programmer("Charlie", "789 Pine St", 65000);
+        
+                System.out.println("Manager Info:");
+                manager.printEmployeeInfo();
+                System.out.println("Bonus: $" + manager.calculateBonus());
+                System.out.println(manager.generatePerformanceReport());
+                System.out.println(manager.manageProject("Project Alpha") + "\n");
+        
+                System.out.println("Developer Info:");
+                developer.printEmployeeInfo();
+                System.out.println("Bonus: $" + developer.calculateBonus());
+                System.out.println(developer.generatePerformanceReport());
+                System.out.println(developer.manageProject("Project Beta") + "\n");
+        
+                System.out.println("Programmer Info:");
+                programmer.printEmployeeInfo();
+                System.out.println("Bonus: $" + programmer.calculateBonus());
+                System.out.println(programmer.generatePerformanceReport());
+                System.out.println(programmer.manageProject("Project Gamma"));
+            }
+        }
+   
+        
+                OUTPUT
+
+                Manager Info:
+                Name: Alice
+                Address: 123 Maple St
+                Salary: $85000.0
+                Job Title: Manager
+                Bonus: $12750.0
+                Performance report for Alice (Manager)
+                Alice (Manager) is overseeing the project: Project Alpha
+                
+                Developer Info:
+                Name: Bob
+                Address: 456 Oak St
+                Salary: $75000.0
+                Job Title: Developer
+                Bonus: $7500.0
+                Performance report for Bob (Developer)
+                Bob (Developer) is developing the project: Project Beta
+                
+                Programmer Info:
+                Name: Charlie
+                Address: 789 Pine St
+                Salary: $65000.0
+                Job Title: Programmer
+                Bonus: $5200.0
+                Performance report for Charlie (Programmer)
+                Charlie (Programmer) is coding for the project: Project Gamma
+</code>
+</pre>
+</body>
+</html>

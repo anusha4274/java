@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    abstract class Shape3D {
+        public abstract double calculateVolume();
+        public abstract double calculateSurfaceArea();
+    }
+    
+    class Sphere extends Shape3D {
+        private double radius;
+    
+        public Sphere(double radius) {
+            this.radius = radius;
+        }
+    
+        @Override
+        public double calculateVolume() {
+            return (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+        }
+    
+        @Override
+        public double calculateSurfaceArea() {
+            return 4 * Math.PI * Math.pow(radius, 2);
+        }
+    }
+    
+    class Cube extends Shape3D {
+        private double sideLength;
+    
+        public Cube(double sideLength) {
+            this.sideLength = sideLength;
+        }
+    
+        @Override
+        public double calculateVolume() {
+            return Math.pow(sideLength, 3);
+        }
+    
+        @Override
+        public double calculateSurfaceArea() {
+            return 6 * Math.pow(sideLength, 2);
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Shape3D sphere = new Sphere(5);
+            Shape3D cube = new Cube(4);
+    
+            System.out.println("Sphere with radius 5:");
+            System.out.println("Volume: " + sphere.calculateVolume());
+            System.out.println("Surface Area: " + sphere.calculateSurfaceArea());
+    
+            System.out.println("\nCube with side length 4:");
+            System.out.println("Volume: " + cube.calculateVolume());
+            System.out.println("Surface Area: " + cube.calculateSurfaceArea());
+        }
+    }
+
+                   OUTPUT
+
+                   Sphere with radius 5:
+                   Volume: 523.5987755982989
+                   Surface Area: 314.1592653589793
+                   
+                   Cube with side length 4:
+                   Volume: 64.0
+                   Surface Area: 96.0
+</code></pre>
+</body>
+</html>                   
