@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    package myPackage;
+
+    public class Person {
+        // Public member variables
+        public String name;
+        public int age;
+    
+        // Constructor to initialize name and age
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+    
+        // Public method to display person details
+        public void displayInfo() {
+            System.out.println("Name: " + name);
+            System.out.println("Age: " + age);
+        }
+    }
+
+    
+    import myPackage.Person;
+
+public class MainClass {
+    public static void main(String[] args) {
+        // Create an object of the Person class from the myPackage package
+        Person person = new Person("John Doe", 30);
+
+        // Access and print the public member variables
+        System.out.println("Accessing public members directly:");
+        System.out.println("Name: " + person.name);
+        System.out.println("Age: " + person.age);
+
+        // Call the public method
+        System.out.println("\nCalling the public method:");
+        person.displayInfo();
+    }
+}
+
+
+<h3>Output</h3>
+
+Accessing public members directly:
+Name: John Doe
+Age: 30
+
+Calling the public method:
+Name: John Doe
+Age: 30
+</code></pre>
+</body>
+</html>

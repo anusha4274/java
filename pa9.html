@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    package c4.sample;
+
+    public class SampleClass {
+        // Public member variable
+        public String publicField = "This is a public field";
+    
+        // Protected member variable
+        protected String protectedField = "This is a protected field";
+    
+        // Public method
+        public void publicMethod() {
+            System.out.println("This is a public method");
+        }
+    
+        // Protected method
+        protected void protectedMethod() {
+            System.out.println("This is a protected method");
+        }
+    }
+
+    package c4.main;
+
+import c4.sample.SampleClass;
+
+public class MainClass {
+    public static void main(String[] args) {
+        // Create an object of SampleClass
+        SampleClass sample = new SampleClass();
+        
+        // Access the public member directly
+        System.out.println(sample.publicField);
+        sample.publicMethod();
+
+        // Access the protected member and method
+        // Protected members can be accessed in the same package or through inheritance
+        // Since MainClass is in a different package, we need inheritance or an instance of subclass
+        SubClass subClass = new SubClass();
+        subClass.accessProtectedMembers();
+    }
+}
+
+// Subclass to access protected members from SampleClass
+class SubClass extends SampleClass {
+    public void accessProtectedMembers() {
+        // Access protected field and method from SampleClass
+        System.out.println(protectedField);
+        protectedMethod();
+    }
+}
+
+ <h3>Output</h3>
+
+
+ This is a public field
+This is a public method
+This is a protected field
+This is a protected method
+</code></pre>
+</body>
+</html>
