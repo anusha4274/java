@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    interface Searchable {
+        void search(String keyword);
+    }
+    
+    class Document implements Searchable {
+        private String content;
+    
+        public Document(String content) {
+            this.content = content;
+        }
+    
+        @Override
+        public void search(String keyword) {
+            if (content.contains(keyword)) {
+                System.out.println("Document: Keyword '" + keyword + "' found in the document.");
+            } else {
+                System.out.println("Document: Keyword '" + keyword + "' not found in the document.");
+            }
+        }
+    }
+    
+    class WebPage implements Searchable {
+        private String url;
+        private String content;
+    
+        public WebPage(String url, String content) {
+            this.url = url;
+            this.content = content;
+        }
+    
+        @Override
+        public void search(String keyword) {
+            if (content.contains(keyword)) {
+                System.out.println("WebPage: Keyword '" + keyword + "' found in the web page at " + url);
+            } else {
+                System.out.println("WebPage: Keyword '" + keyword + "' not found in the web page at " + url);
+            }
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Document document = new Document("This is a sample document content with some text.");
+            WebPage webPage = new WebPage("https://www.example.com", "This is a webpage with some content to search.");
+    
+            // Search in the document
+            document.search("sample");
+            document.search("example");
+    
+            // Search in the webpage
+            webPage.search("webpage");
+            webPage.search("missing");
+        }
+    }
+
+                     <h3>Output</h3>
+
+                     Document: Keyword 'sample' found in the document.
+                     Document: Keyword 'example' not found in the document.
+                     WebPage: Keyword 'webpage' found in the web page at https://www.example.com
+                     WebPage: Keyword 'missing' not found in the web page at https://www.example.com
+</code></pre>
+</body>
+</html>                     

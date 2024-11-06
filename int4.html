@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    import java.util.ArrayList;
+    import java.util.List;
+    
+    // Account interface
+    interface Account {
+        void deposit(double amount);
+        void withdraw(double amount);
+        double calculateInterest();
+        double getBalance();
+    }
+    
+    // SavingsAccount class implements Account interface
+    class SavingsAccount implements Account {
+        private double balance;
+        private static final double INTEREST_RATE = 0.04;
+    
+        public SavingsAccount(double initialBalance) {
+            this.balance = initialBalance;
+        }
+    
+        @Override
+        public void deposit(double amount) {
+            balance += amount;
+        }
+    
+        @Override
+        public void withdraw(double amount) {
+            if (amount &lt= balance) {
+                balance -= amount;
+            } else {
+                System.out.println("Insufficient balance");
+            }
+        }
+    
+        @Override
+        public double calculateInterest() {
+            return balance * INTEREST_RATE;
+        }
+    
+        @Override
+        public double getBalance() {
+            return balance;
+        }
+    }
+    
+    // CurrentAccount class implements Account interface
+    class CurrentAccount implements Account {
+        private double balance;
+        private static final double OVERDRAFT_LIMIT = 500.0;
+    
+        public CurrentAccount(double initialBalance) {
+            this.balance = initialBalance;
+        }
+    
+        @Override
+        public void deposit(double amount) {
+            balance += amount;
+        }
+    
+        @Override
+        public void withdraw(double amount) {
+            if (amount &lt= balance + OVERDRAFT_LIMIT) {
+                balance -= amount;
+            } else {
+                System.out.println("Overdraft limit exceeded");
+            }
+        }
+    
+        @Override
+        public double calculateInterest() {
+            return 0.0; // CurrentAccount doesn't earn interest
+        }
+    
+        @Override
+        public double getBalance() {
+            return balance;
+        }
+    }
+    
+    // Bank class with a list of accounts
+    class Bank {
+        private List&ltAccount&gt accounts = new ArrayList&lt&gt();
+    
+        public void addAccount(Account account) {
+            accounts.add(account);
+        }
+    
+        public void displayAllBalances() {
+            for (Account account : accounts) {
+                System.out.println("Account balance: " + account.getBalance());
+            }
+        }
+    }
+    
+    // Main class
+    public class BankingSystem {
+        public static void main(String[] args) {
+            // Create a bank
+            Bank bank = new Bank();
+    
+            // Create accounts
+            Account savings = new SavingsAccount(1000);
+            Account current = new CurrentAccount(500);
+    
+            // Add accounts to bank
+            bank.addAccount(savings);
+            bank.addAccount(current);
+    
+            // Perform some transactions
+            savings.deposit(500);
+            current.deposit(200);
+            savings.withdraw(300);
+            current.withdraw(600);
+    
+            // Display all balances
+            bank.displayAllBalances();
+    
+            // Calculate and display interest
+            System.out.println("Savings account interest: " + ((SavingsAccount) savings).calculateInterest());
+            System.out.println("Current account interest: " + ((CurrentAccount) current).calculateInterest());
+        }
+    }
+
+    
+                       <h3>Output</h3>
+
+                       Account balance: 1200.0
+                       Account balance: 100.0
+                       Savings account interest: 48.0
+                       Current account interest: 0.0
+</code></pre>
+</body>
+</html>

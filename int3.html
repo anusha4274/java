@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    interface Flyable {
+        void fly_obj();
+    }
+    
+    class Spacecraft implements Flyable {
+        @Override
+        public void fly_obj() {
+            System.out.println("Spacecraft is flying in space.");
+        }
+    }
+    
+    class Airplane implements Flyable {
+        @Override
+        public void fly_obj() {
+            System.out.println("Airplane is flying in the sky.");
+        }
+    }
+    
+    class Helicopter implements Flyable {
+        @Override
+        public void fly_obj() {
+            System.out.println("Helicopter is flying over the ground.");
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            Flyable spacecraft = new Spacecraft();
+            Flyable airplane = new Airplane();
+            Flyable helicopter = new Helicopter();
+    
+            spacecraft.fly_obj();  // Calls fly_obj() method of Spacecraft class
+            airplane.fly_obj();    // Calls fly_obj() method of Airplane class
+            helicopter.fly_obj();  // Calls fly_obj() method of Helicopter class
+        }
+    }
+
+    
+               <h3>Output</h3>
+
+               Spacecraft is flying in space.
+               Airplane is flying in the sky.
+               Helicopter is flying over the ground.
+</code></pre>
+</body>
+</html>               

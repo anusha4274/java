@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+    interface Sortable {
+        void sort(int[] array);
+    }
+    
+    class BubbleSort implements Sortable {
+        @Override
+        public void sort(int[] array) {
+            int n = array.length;
+            for (int i = 0; i &lt n - 1; i++) {
+                for (int j = 0; j &lt n - i - 1; j++) {
+                    if (array[j] &gt array[j + 1]) {
+                        // Swap the elements
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+            System.out.println("Array sorted using Bubble Sort:");
+            printArray(array);
+        }
+    
+        private void printArray(int[] array) {
+            for (int num : array) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    class SelectionSort implements Sortable {
+        @Override
+        public void sort(int[] array) {
+            int n = array.length;
+            for (int i = 0; i &lt n - 1; i++) {
+                int minIndex = i;
+                for (int j = i + 1; j &lt n; j++) {
+                    if (array[j] &lt array[minIndex]) {
+                        minIndex = j;
+                    }
+                }
+                // Swap the found minimum element with the first element
+                int temp = array[minIndex];
+                array[minIndex] = array[i];
+                array[i] = temp;
+            }
+            System.out.println("Array sorted using Selection Sort:");
+            printArray(array);
+        }
+    
+        private void printArray(int[] array) {
+            for (int num : array) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    public class Main {
+        public static void main(String[] args) {
+            int[] array = {5, 2, 9, 1, 5, 6};
+    
+            Sortable bubbleSort = new BubbleSort();
+            bubbleSort.sort(array);
+    
+            int[] array2 = {5, 2, 9, 1, 5, 6}; // Re-initialize array for second sorting
+            Sortable selectionSort = new SelectionSort();
+            selectionSort.sort(array2);
+        }
+    }
+       
+                   <h3>Output</h3>
+
+                   Array sorted using Bubble Sort:
+                   1 2 5 5 6 9 
+                   Array sorted using Selection Sort:
+                   1 2 5 5 6 9
+</code></pre>
+</body>
+</html>                   
