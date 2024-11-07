@@ -49,3 +49,30 @@
 <body>
 
     <pre><code>
+        <pre><span>8. Write a Java program to show an example of throws Keyword.</span>
+            import java.io.File;
+            import java.io.FileNotFoundException;
+            import java.util.Scanner;
+            
+            class main {
+                public static void readFile(String fileName) throws FileNotFoundException {
+                    File file = new File(fileName);
+                    Scanner scanner = new Scanner(file);  
+                    while (scanner.hasNextLine()) {
+                        System.out.println(scanner.nextLine());
+                    }
+                    scanner.close();
+                }
+            
+                public static void main(String[] args) {
+                    try {
+                        readFile("nonexistentfile.txt");  
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Caught an exception: " + e.getMessage());
+                    }
+                }
+            }
+            </pre></code>
+            </pre>
+            </body>
+            </html>
