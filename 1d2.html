@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+    <!-- Google Fonts - Noto Sans Mono for Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Code Block Styling */
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; /* Monospace font for code */
+            background-color: #e8f7fa; /* Light pastel teal for background */
+            color: #2c3e50; /* Dark blue for code text */
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; /* Ensure proper wrapping */
+            line-height: 1.5; /* Better line spacing */
+            overflow-x: auto; /* Horizontal scrolling for large code blocks */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Pre block to enhance code readability */
+        pre {
+            margin: 20px 0;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<html>
+    <body>
+        <pre>
+            <code>
+                import java.util.HashMap;
+import java.util.Map;
+
+class FrequencyCounter {
+    public static void main(String[] args) {
+       
+        int[] array = {1, 2, 3, 4, 1, 2, 2, 3, 5, 4, 6, 7, 6, 8, 9, 9};
+
+        
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        
+        for (int element : array) {
+           
+            if (frequencyMap.containsKey(element)) {
+                frequencyMap.put(element, frequencyMap.get(element) + 1);
+            } else {
+               
+                frequencyMap.put(element, 1);
+            }
+        }
+
+        System.out.println("Element frequencies:");
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}
+            </code>
+        </pre>
+    </body>
+</html>
