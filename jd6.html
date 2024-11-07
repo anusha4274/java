@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre>        <code>
+        import java.sql.*;
+class jdbc6{
+public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/anusha", "root", "root");
+    Statement stmt = conn.createStatement();
+    ResultSet rs = stmt.executeQuery("SELECT * FROM student");
+    while (rs.next()) {
+        int rollno = rs.getInt("rollno");
+        String name = rs.getString("name");
+        System.out.println("Roll No: " + rollno + ", Name: " + name);
+    }
+    rs.close();
+    stmt.close();
+    conn.close();
+}
+}
+
+
+OUTPUT
+
+
+G:\COLLEGE WORK\JavaPrograms&gt;javac jdbc6.java
+G:\COLLEGE WORK\JavaPrograms&gt;java jdbc6
+
+Roll No: 1, Name: anusha
+Roll No: 2, Name: tanuja
+Roll No: 4, Name: khushi
+    </code>
+</pre>
+</body>
+</html>
