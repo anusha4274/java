@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre>        <code>
+
+
+        class Employee {
+            private int employee_id;
+            private String employee_name;
+            private double employee_salary;
+        
+            // Getter methods
+            public int getEmployeeId() {
+                return employee_id;
+            }
+        
+            public String getEmployeeName() {
+                return employee_name;
+            }
+        
+            public String getEmployeeSalary() {
+                return String.format("$%,.2f", employee_salary);
+            }
+        
+            // Setter methods
+            public void setEmployeeId(int employee_id) {
+                this.employee_id = employee_id;
+            }
+        
+            public void setEmployeeName(String employee_name) {
+                this.employee_name = employee_name;
+            }
+        
+            public void setEmployeeSalary(double employee_salary) {
+                this.employee_salary = employee_salary;
+            }
+        }
+        
+        class W{
+            public static void main(String[] args) {
+                Employee employee = new Employee();
+        
+                // Set the employee's details
+                employee.setEmployeeId(123);
+                employee.setEmployeeName("John Doe");
+                employee.setEmployeeSalary(50000.0);
+        
+                // Get and print the employee's details
+                System.out.println("Employee ID: " + employee.getEmployeeId());
+                System.out.println("Employee Name: " + employee.getEmployeeName());
+                System.out.println("Employee Salary: " + employee.getEmployeeSalary());
+            }
+        }
+        
+        OUTPUT
+        
+        
+        Employee ID: 123
+        Employee Name: John Doe
+        Employee Salary: $50,000.00 
+    </code>
+</pre>
+</body>
+</html>

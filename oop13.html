@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre>        <code>
+        class Product {
+            private String name;
+            private int quantity;
+        
+            public Product(String name, int quantity) {
+                this.name = name;
+                this.quantity = quantity;
+            }
+        
+            public String getName() {
+                return name;
+            }
+        
+            public int getQuantity() {
+                return quantity;
+            }
+        
+            public void setQuantity(int quantity) {
+                this.quantity = quantity;
+            }
+        }
+        
+        class Inventory {
+            private Product[] products;
+        
+            public Inventory() {
+                this.products = new Product[0];
+            }
+        
+            // Method to add a product to the inventory
+            public void addProduct(Product product) {
+                // Resize the products array to accommodate the new product
+                Product[] newProducts = new Product[this.products.length + 1];
+                for (int i = 0; i &lt; this.products.length; i++) {
+                    newProducts[i] = this.products[i];
+                }
+                newProducts[this.products.length] = product;
+                this.products = newProducts;
+            }
+        
+            // Method to remove a product from the inventory
+            public void removeProduct(String productName) {
+                for (int i = 0; i &lt; this.products.length; i++) {
+                    if (this.products[i].getName().equals(productName)) {
+                        // Remove the product by shifting the remaining products
+                        Product[] newProducts = new Product[this.products.length - 1];
+                        for (int j = 0; j &lt; i; j++) {
+                            newProducts[j] = this.products[j];
+                        }
+                        for (int j = i; j &lt; this.products.length - 1; j++) {
+                            newProducts[j] = this.products[j + 1];
+                        }
+                        this.products = newProducts;
+                        return;
+                    }
+                }
+                System.out.println("Product not found in inventory.");
+            }
+        
+            // Method to check for low inventory (less than 10 units)
+            public void checkLowInventory() {
+                for (Product product : this.products) {
+                    if (product.getQuantity() &lt; 10) {
+                        System.out.println("Low inventory alert: " + product.getName() + " has " + product.getQuantity() + " units left.");
+                    }
+                }
+            }
+        
+            // Method to print the inventory
+            public void printInventory() {
+                for (Product product : this.products) {
+                    System.out.println(product.getName() + ": " + product.getQuantity() + " units");
+                }
+            }
+        }
+        class M2 {
+            public static void main(String[] args) {
+                Inventory inventory = new Inventory();
+        
+                // Add some products to the inventory
+                inventory.addProduct(new Product("Apple", 20));
+                inventory.addProduct(new Product("Banana", 15));
+                inventory.addProduct(new Product("Orange", 5));
+        
+                // Print the initial inventory
+                inventory.printInventory();
+        
+                // Remove a product from the inventory
+                inventory.removeProduct("Banana");
+        
+                // Print the updated inventory
+                inventory.printInventory();
+        
+                // Check for low inventory
+                inventory.checkLowInventory();
+            }
+        }
+        
+        OUTPUT
+        
+        
+        Apple: 20 units
+        Banana: 15 units
+        Orange: 5 units
+        Apple: 20 units
+        Orange: 5 units
+        Low inventory alert: Orange has 5 units left.
+
+        
+    </code>
+</pre>
+</body>
+</html>

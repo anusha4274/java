@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre>        <code>
+
+        class Book {
+            private String title;
+            private String author;
+        
+            // Constructor
+            public Book(String title, String author) {
+                this.title = title;
+                this.author = author;
+            }
+        
+            // Getters
+            public String getTitle() {
+                return title;
+            }
+        
+            public String getAuthor() {
+                return author;
+            }
+        }
+        
+        class Library {
+            private Book[] books;
+        
+            // Constructor
+            public Library() {
+                this.books = new Book[0];
+            }
+        
+            // Method to add a book
+            public void addBook(Book book) {
+                Book[] newBooks = new Book[books.length + 1];
+                for (int i = 0; i &lt; books.length; i++) {
+                    newBooks[i] = books[i];
+                }
+                newBooks[books.length] = book;
+                books = newBooks;
+            }
+        
+            // Method to remove a book
+            public void removeBook(Book book) {
+                int index = -1;
+                for (int i = 0; i &lt; books.length; i++) {
+                    if (books[i].equals(book)) {
+                        index = i;
+                        break;
+                    }
+                }
+                if (index != -1) {
+                    Book[] newBooks = new Book[books.length - 1];
+                    for (int i = 0; i &lt; index; i++) {
+                        newBooks[i] = books[i];
+                    }
+                    for (int i = index; i &lt; books.length - 1; i++) {
+                        newBooks[i] = books[i + 1];
+                    }
+                    books = newBooks;
+                } else {
+                    System.out.println("Book not found.");
+                }
+            }
+        
+            // Method to print library details
+            public void printLibraryDetails() {
+                System.out.println("Books:");
+                for (Book book : books) {
+                    System.out.println("Title: " + book.getTitle() + ", Author: " + book.getAuthor());
+                }
+            }
+        }
+        
+         class H {
+            public static void main(String[] args) {
+                Library library = new Library();
+        
+                // Add some books
+                library.addBook(new Book("To Kill a Mockingbird", "Harper Lee"));
+                library.addBook(new Book("1984", "George Orwell"));
+                library.addBook(new Book("Pride and Prejudice", "Jane Austen"));
+        
+                // Print library details
+                library.printLibraryDetails();
+        
+                // Remove a book
+                library.removeBook(new Book("1984", "George Orwell"));
+        
+                // Print library details again
+                library.printLibraryDetails();
+            }
+        }
+        
+        OUTPUT
+        
+        
+        Books:
+        Title: To Kill a Mockingbird, Author: Harper Lee
+        Title: 1984, Author: George Orwell
+        Title: Pride and Prejudice, Author: Jane Austen
+        Book not found.
+        Books:
+        Title: To Kill a Mockingbird, Author: Harper Lee
+        Title: 1984, Author: George Orwell
+        Title: Pride and Prejudice, Author: Jane Austen
+        
+    </code>
+</pre>
+</body></html>

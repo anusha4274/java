@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre>        <code>
+
+        class Movie {
+            private String title;
+            private String director;
+            private String[] actors;
+            private String[] reviews;
+        
+            public Movie(String title, String director, String[] actors) {
+                this.title = title;
+                this.director = director;
+                this.actors = actors;
+                this.reviews = new String[0];
+            }
+        
+            public String getTitle() {
+                return title;
+            }
+        
+            public String getDirector() {
+                return director;
+            }
+        
+            public String[] getActors() {
+                return actors;
+            }
+        
+            public String[] getReviews() {
+                return reviews;
+            }
+        
+            public void addReview(String review) {
+                String[] newReviews = new String[reviews.length + 1];
+                for (int i = 0; i &lt; reviews.length; i++) {
+                    newReviews[i] = reviews[i];
+                }
+                newReviews[reviews.length] = review;
+                reviews = newReviews;
+            }
+        
+            public void printMovieDetails() {
+                System.out.println("Title: " + title);
+                System.out.println("Director: " + director);
+                System.out.println("Actors: ");
+                for (String actor : actors) {
+                    System.out.println(actor);
+                }
+                System.out.println("Reviews:");
+                for (String review : reviews) {
+                    System.out.println(review);
+                }
+            }
+        }
+        
+        class K{
+            public static void main(String[] args) {
+                String[] actors = {"Tom Hanks", "Meg Ryan", "Ross Malinger"};
+        
+                Movie movie = new Movie("Sleepless in Seattle", "Nora Ephron", actors);
+        
+                movie.addReview("A romantic comedy classic!");
+                movie.addReview("Tom Hanks and Meg Ryan have great chemistry.");
+                movie.addReview("A feel-good movie that will leave you smiling.");
+        
+                movie.printMovieDetails();
+            }
+        }
+        
+        OUTPUT
+        
+        
+        Title: Sleepless in Seattle
+        Director: Nora Ephron
+        Actors:
+        Tom Hanks
+        Meg Ryan
+        Ross Malinger
+        Reviews:
+        A romantic comedy classic!
+        Tom Hanks and Meg Ryan have great chemistry.
+        A feel-good movie that will leave you smiling.
+        
+    </code>
+</pre>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Code Snippet</title>
+
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        
+        code, pre {
+            font-family: 'Noto Sans Mono', monospace; 
+            background-color: #e8f7fa; 
+            color: #2c3e50;
+            padding: 15px;
+            border-radius: 10px;
+            display: block;
+            white-space: pre-wrap; 
+            line-height: 1.5; 
+            overflow-x: auto; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+     
+        pre {
+            margin: 20px 0;
+        }
+
+       
+        @media (max-width: 768px) {
+            code, pre {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre>        <code>
+        class Person {
+            private String name;
+            private int age;
+        
+            public Person(String name, int age) {
+                this.name = name;
+                this.age = age;
+            }
+        
+            public String getName() {
+                return name;
+            }
+        
+            public int getAge() {
+                return age;
+            }
+        }
+        
+        class A {
+            public static void main(String[] args) {
+                // Create two instances of the Person class
+                Person person1 = new Person("John Doe", 30);
+                Person person2 = new Person("Jane Doe", 25);
+        
+                // Print the attributes of each person
+                System.out.println("Person 1: " + person1.getName() + ", " + person1.getAge() + " years old");
+                System.out.println("Person 2: " + person2.getName() + ", " + person2.getAge() + " years old");
+            }
+        }
+        
+        OUTPUT
+        
+        
+        Person 1: John Doe, 30 years old
+        Person 2: Jane Doe, 25 years old
+
+
+    </code>
+</pre>
+</body></html>
